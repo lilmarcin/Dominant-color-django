@@ -37,9 +37,9 @@ This project is a web application that detects and displays the 5 dominant color
 1. Run the Django application:
 
     ```bash
-    python app.py
+    python manage.py runserver
 
-2. Open a web browser and go to http://localhost:8000.
+2. Open a web browser and go to http://127.0.0.1:8000/.
 3. Enter the URL of an image in the provided input field.
 4. Click the "Upload" button to analyze the image and display the dominant colors.
 
