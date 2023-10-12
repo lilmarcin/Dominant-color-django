@@ -31,7 +31,7 @@
     <div class="container">
         <div class="row">
             <div class="col-6 mx-auto mt-5 text-center">
-                <h1 class="mb-5">Dominant colors (Django version)</h1>
+                <h2 class="mb-5">Dominant colors (Django version)</h2>
                 <form method="POST" action="/" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="form-group">
@@ -41,13 +41,11 @@
                     <button type="submit" class="btn btn-success">Upload</button>
                 </form>
                 
-                {% if image_url %}
                 <div class="row justify-content-center mt-3">
                     <div class="col-auto">
                         <img src="{{ image_filepath }}" style="width: 400px;">
                     </div>
                 </div>
-                {% endif %}
                 <div class="row justify-content-center mt-3">
                     <div class="col-auto">
                         <h2>Dominant Colors:</h2>

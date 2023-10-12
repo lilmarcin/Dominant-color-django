@@ -17,6 +17,9 @@ def index(request, folder_id=None):
 
 
 def display_image(request):
+    dominant_colors_with_lightness = []
+    uploaded_image = None
+    image_filepath = None
 
     if request.method == 'POST':
         form = ImageUploadForm(request.POST, request.FILES)
@@ -29,14 +32,11 @@ def display_image(request):
                     destination.write(chunk)
 
             num_colors = 5
-            dominant_colors = get_dominant_colors(image_filepath, num_colors)
+            dominant_colors = get_dominant_colors(uploaded_image, num_colors)
             dominant_colors_with_lightness = [(color, int(percentage), is_color_light(color)) for color, percentage in dominant_colors]
-
-            return render(request, 'index.html', {'image_url': image_filepath, 'dominant_colors': dominant_colors_with_lightness})
+            #print("Image URL:", uploaded_image)
+            #print("Image filepath:", image_filepath)
     else:
         form = ImageUploadForm()
 
-    return render(request, 'index.html', {'form': form, 'image_url': uploaded_image})
-
-
-
+    return render(request, 'index.html', {'image_filepath': image_filepath, 'dominant_colors': dominant_colors_with_lightness, 'form': form})
